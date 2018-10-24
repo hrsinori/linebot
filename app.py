@@ -50,7 +50,11 @@ def handle_message(event):
     original_content_url='https://i.imgur.com/TTGIUkS.jpg',
     preview_image_url='https://i.imgur.com/TTGIUkS.jpg'
     )
-    line_bot_api.reply_message(event.reply_token, [message ,message2, message3])
+    message4 = StickerSendMessage(
+    package_id='1',
+    sticker_id='2'
+    )
+    line_bot_api.reply_message(event.reply_token, [message ,message2, message3, message4])
     
     
 
