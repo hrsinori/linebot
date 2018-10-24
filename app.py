@@ -47,8 +47,8 @@ def handle_message(event):
     message = TextSendMessage(text='告誡少女')
     line_bot_api.reply_message(event.reply_token, message)
     
-    message = TextSendMessage(event.source.user_id)
-    line_bot_api.reply_message(event.reply_token, message)
+    message2 = TextSendMessage(event.source.user_id)
+    line_bot_api.reply_message(event.reply_token, message2)
     
 
 import os
