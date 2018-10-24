@@ -46,7 +46,7 @@ def handle_message(event):
     
     message = TextSendMessage(text='告解少女')
     message2 = TextSendMessage(event.source.user_id)
-    line_bot_api.reply_message(event.reply_token, [message message2])
+    line_bot_api.reply_message(event.reply_token, [message ,message2])
     
     
 
