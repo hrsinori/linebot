@@ -46,7 +46,11 @@ def handle_message(event):
     
     message = TextSendMessage(text='告解少女')
     message2 = TextSendMessage(event.source.user_id)
-    line_bot_api.reply_message(event.reply_token, [message ,message2])
+    message3 = ImageSendMessage(
+    original_content_url='https://i.imgur.com/TTGIUkS.jpg',
+    preview_image_url='https://i.imgur.com/TTGIUkS.jpg'
+    )
+    line_bot_api.reply_message(event.reply_token, [message ,message2, message3])
     
     
 
