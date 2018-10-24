@@ -44,15 +44,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
+    message = TextSendMessage(text='Hello, world')
+    line_bot_api.reply_message(event.reply_token, message)
+    
     message2 = TextSendMessage(event.source.user_id)
     line_bot_api.reply_message(event.reply_token, message2)
     
-    message = ImageSendMessage(
-    original_content_url='message = ImageSendMessage(
-    original_content_url='https://i.imgur.com/JmyvfQ3.jpg',
-    preview_image_url='https://i.imgur.com/JmyvfQ3.jpg'
-    )
-    line_bot_api.reply_message(event.reply_token, message)',
 
 import os
 if __name__ == "__main__":
