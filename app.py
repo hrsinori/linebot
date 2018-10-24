@@ -46,6 +46,12 @@ def handle_message(event):
     message = TextSendMessage(text='1')
     line_bot_api.reply_message(event.reply_token, message)
     
+    message = ImageSendMessage(
+    original_content_url='https://i.pximg.net/img-original/img/2018/08/13/17/45/34/70175336_p0.png',
+    preview_image_url='https://i.pximg.net/img-original/img/2018/08/13/17/45/34/70175336_p0.png'
+)
+line_bot_api.reply_message(event.reply_token, message)
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
