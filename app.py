@@ -44,7 +44,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     
-    message = TextSendMessage(text='告解少女')
+    message = TextSendMessage(text='您好，這裡是告解少女，請問有什麼煩惱嗎？')
     message2 = TextSendMessage(event.source.user_id)
     message3 = ImageSendMessage(
     original_content_url='https://i.imgur.com/TTGIUkS.jpg',
