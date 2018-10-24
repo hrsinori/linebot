@@ -43,17 +43,10 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
-    message = {
-    "type": "text",
-    "text": "您好，這裡是告誡少女,請問今天有什麼煩惱想訴說嗎？"
-    }
-     line_bot_api.reply_message(event.reply_token, message)
     
-    message = TextSendMessage(text='Hello, world')
-    line_bot_api.reply_message(event.reply_token, message)
-    
+    message = TextSendMessage(text='告誡少女')
     message2 = TextSendMessage(event.source.user_id)
+    line_bot_api.reply_message(event.reply_token, message)
     line_bot_api.reply_message(event.reply_token, message2)
     
 
