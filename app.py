@@ -60,7 +60,7 @@ def handle_message(event):
     package_id='1',
     sticker_id='2'
     )
-    line_bot_api.reply_message(event.reply_token, [message ,message2, message3, message4, message5, message6])
+    line_bot_api.reply_message(event.reply_token, [message ,message2, message3, message4, message5])
     
     
 
