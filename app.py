@@ -50,6 +50,12 @@ def handle_message(event):
     original_content_url='https://i.imgur.com/TTGIUkS.jpg',
     preview_image_url='https://i.imgur.com/TTGIUkS.jpg'
     )
+    message5 = LocationSendMessage(
+    title='my location',
+    address='Tokyo',
+    latitude=35.65910807942215,
+    longitude=139.70372892916203
+    )
     message4 = StickerSendMessage(
     package_id='1',
     sticker_id='2'
