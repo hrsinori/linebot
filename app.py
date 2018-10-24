@@ -44,11 +44,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    message = ImageSendMessage(
-    original_content_url='https://i.pximg.net/img-original/img/2018/08/13/17/45/34/70175336_p0/original.png',
-    preview_image_url='https://i.pximg.net/img-original/img/2018/08/13/17/45/34/70175336_p0/preview.png'
-)
-line_bot_api.reply_message(event.reply_token, message)
+message2 = TextSendMessage(event.source.user_id)
+line_bot_api.reply_message(event.reply_token, message2)
 
 import os
 if __name__ == "__main__":
