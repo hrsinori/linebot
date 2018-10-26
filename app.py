@@ -57,8 +57,8 @@ def handle_message(event):
     longitude=120.601013,
     )
     message4 = StickerSendMessage(
-    package_id='1',
-    sticker_id='2'
+    package_id='3',
+    sticker_id='200'
     )
     line_bot_api.reply_message(event.reply_token, [message ,message2, message3, message4, message5])
     
