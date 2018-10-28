@@ -45,22 +45,8 @@ def callback():
 def handle_message(event):
     
     message = TextSendMessage(text='您好，這裡是告解少女，請問有什麼煩惱嗎？')
-    message2 = TextSendMessage(event.source.user_id)
-    message3 = ImageSendMessage(
-    original_content_url='https://i.imgur.com/TTGIUkS.jpg',
-    preview_image_url='https://i.imgur.com/TTGIUkS.jpg'
-    )
-    message5 = LocationSendMessage(
-    title='my location',
-    address='Heaven',
-    latitude=24.178111, 
-    longitude=120.601013,
-    )
-    message4 = StickerSendMessage(
-    package_id='3',
-    sticker_id='200'
-    )
-    line_bot_api.reply_message(event.reply_token, [message ,message2, message3, message4, message5])
+
+    line_bot_api.reply_message(event.reply_token, [message])
     
     
 
