@@ -48,11 +48,26 @@ def handle_message(event):
 
     line_bot_api.reply_message(event.reply_token, message)  
 
+def webhook
+    # 設定回覆文字
+    reply_text = keyword_reply(received_text)
+
+    # 傳送訊息到 line
+    response = reply_to_line(reply_text)
+    
+    # 回應 200
+    head :ok
+  end 
+
+  # 取得對方說的話
+def received_text
+    params['events'][0]['message']['text']
+  end
 
   # 關鍵字回覆
-def keyword_reply(received_text)
-    received_text
-  end       
+  def keyword_reply(received_text)
+    received_text    
+  end
 
 import os
 if __name__ == "__main__":
