@@ -40,13 +40,6 @@ def callback():
         abort(400)
     return 'OK'
 
-# 處理訊息
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event): 
-    
-    message = TextSendMessage(text='您好，這裡是告解少女，請問有什麼煩惱嗎？')
-
-    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
