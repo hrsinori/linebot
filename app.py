@@ -46,7 +46,25 @@ def handle_message(event):
     
     message = TextSendMessage(text='您好，這裡是告解少女，請問有什麼煩惱嗎？')
 
-    line_bot_api.reply_message(event.reply_token, message)  
+    line_bot_api.reply_message(event.reply_token, message)
+    
+confirm_template_message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='難過',
+        actions=[
+            PostbackAction(
+                label='postback',
+                text='厭世',
+                data='厭世'
+            ),
+            MessageAction(
+                label='傷心',
+                text='傷心'
+            )
+        ]
+    )
+)
 
 import os
 if __name__ == "__main__":
