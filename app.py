@@ -46,23 +46,7 @@ def handle_message(event):
     
     message = TextSendMessage(text='您好，這裡是告解少女，請問有什麼煩惱嗎？')
 
-    line_bot_api.reply_message(event.reply_token, [message])
-    
-# 傳送訊息到 line
-  def reply_to_line(reply_text)
-    # 取得 reply token
-    reply_token = params['events'][0]['replyToken']
-    
-    # 設定回覆訊息
-    message = {
-      type: '難過',
-      text: '請問發生什麼事了嗎？'
-    } 
-
-    # 傳送訊息
-    line.reply_message(reply_token, message)
-  end    
-    
+    line_bot_api.reply_message(event.reply_token, message)  
     
 
 import os
