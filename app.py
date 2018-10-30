@@ -39,12 +39,9 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-# PM2.5
-def loadPMJson():
-    with urllib.request.urlopen("http://opendata2.epa.gov.tw/AQX.json") as url:
-        data = json.loads(url.read().decode())
-        for ele in data:
-            pm_site[ele['SiteName']] = ele['PM2.5']
+    elif '傷心' in _token[0] or '難過' in _token[0] or '厭世' in _token[0] or '憂鬱' in _token[0]:
+        _message = TextSendMessage(text = '請問發生什麼事了嗎？')	#reply course
+        line_bot_api.reply_message(event.reply_token, _message) 
 
 import os
 if __name__ == "__main__":
