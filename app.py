@@ -1,4 +1,9 @@
 from flask import Flask, request, abort
+
+import urllib.request, json
+import requests
+from bs4 import BeautifulSoup
+
 import os
 import sys
 from linebot import (
@@ -19,6 +24,7 @@ line_bot_api = LineBotApi(ACCESS_TOKEN)
 # Channel Secret
 handler = WebhookHandler(SECRET)
 
+pm_site = {}
 
 @app.route("/")
 def hello_world():
@@ -98,7 +104,32 @@ def loadPMJson():
         for ele in data:
             pm_site[ele['SiteName']] = ele['PM2.5']
 
+def getCls(cls_prefix):
+    ret_cls = []
+    urlstr = 'https://course.thu.edu.tw/search-result/107/1/'
+    postfix = '/all/all'
+    
+    qry_cls = urlstr + cls_prefix + postfix
+    
+    resp = requests.get(qry_cls)
+    resp.encoding = 'utf-8'
+    soup = BeautifulSoup(resp.text, 'lxml')
+    clsrooms = soup.select('table.aqua_table tbody tr')
+    for cls in clsrooms:
+        cls_info = cls.find_all('td')[1]
+        cls_name = cls_info.text.strip()
+        sub_url = 'https://course.thu.edu.tw' + cls_info.find('a')['href']
+        ret_cls.append(cls_name + " " + sub_url)
+        break
+#         ret_cls = ret_cls + sub_url + "\n"
+
+    return ret_cls
+        
+            
 import os
 if __name__ == "__main__":
+    # load PM2.5 records
+    loadPMJson()
+    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
