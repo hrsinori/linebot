@@ -39,7 +39,12 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-
+# PM2.5
+def loadPMJson():
+    with urllib.request.urlopen("http://opendata2.epa.gov.tw/AQX.json") as url:
+        data = json.loads(url.read().decode())
+        for ele in data:
+            pm_site[ele['SiteName']] = ele['PM2.5']
 
 import os
 if __name__ == "__main__":
