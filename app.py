@@ -14,6 +14,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from snownlp import SnowNLP
+
 app = Flask(__name__)
 
 ACCESS_TOKEN= os.environ['ACCESS_TOKEN']
@@ -55,10 +57,10 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)
 text = event.message.text
-from snownlp import SnowNLP
+
 s = SnowNLP(text)
 s1 = SnowNLP(s.sentences[0])
-s1.sentiments
+s1 = s1.sentiments
 line_bot_api.reply_message(event.reply_token, s1)
             
 import os
