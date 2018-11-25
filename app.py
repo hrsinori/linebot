@@ -57,11 +57,11 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)
 
-text= event.message.text
-s = SnowNLP(text)
-s1 = SnowNLP(s.sentences[0])
-s1 = s1.sentiments
-line_bot_api.reply_message(event.reply_token, s1)
+    text= event.message.text
+    s = SnowNLP(text)
+    s1 = SnowNLP(s.sentences[0])
+    s1 = s1.sentiments
+    line_bot_api.reply_message(event.reply_token, s1)
             
 import os
 if __name__ == "__main__":
