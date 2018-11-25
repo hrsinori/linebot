@@ -61,7 +61,7 @@ def handle_message(event):
     # text = u +text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
-    s1 = s1.sentiments
+    s1 = TextSendMessage(text = s1.sentiments)
     line_bot_api.reply_message(event.reply_token, s1)
             
 import os
