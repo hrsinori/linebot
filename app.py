@@ -62,10 +62,10 @@ def handle_message(event):
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1 = TextSendMessage(text = s1.sentiments)
-    line_bot_api.reply_message(event.reply_token, s1)
-    if 0.1 >= s1 >= 0:
+        if 0.1 >= s1 >= 0:
         message1 = TextSendMessage(text='請問您還好嗎？')
         line_bot_api.reply_message(event.reply_token, message1)
+    line_bot_api.reply_message(event.reply_token, s1)
             
 import os
 
