@@ -97,7 +97,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, [message8,_message8])
     elif 0.45 > s1 and s1 >= 0.4:
         message9 = TextSendMessage(text='今天也辛苦了呢！')
-        _message9 = TextSendMessage(text='讓告解少女為您分擔吧d(・∀＜)')
+        _message9 = TextSendMessage(text='讓告解少女為您分擔吧d(・∀<)')
         line_bot_api.reply_message(event.reply_token, [message9,_message9])
     elif s1 >= 0.45:
         s1 = TextSendMessage(text = s1.sentiments)    
