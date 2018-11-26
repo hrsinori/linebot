@@ -62,11 +62,30 @@ def handle_message(event):
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1 = s1.sentiments
-    if 0.1 > s1 and s1 >= 0:
-        message1 = TextSendMessage(text='請問您還好嗎？')
-        line_bot_api.reply_message(event.reply_token, message1)
-    s1 = TextSendMessage(text = s1.sentiments)    
-    line_bot_api.reply_message(event.reply_token, s1)
+    if 0.05 > s1 and s1 >= 0:
+        _message1 = TextSendMessage(text='今天的您令人有些擔心呢。')
+        message1 = TextSendMessage(text='請問您需要幫助，或是找人聊聊嗎？')
+        message1_ = TextSendMessage(text='告解少女隨時都在您身邊喔(*・∀-)')
+        line_bot_api.reply_message(event.reply_token,_message1, message1, message1_)
+    elif 0.1 > s1 and s1 >= 0.05:
+        message2 = TextSendMessage(text='請問您還好嗎？')
+        _message2 = TextSendMessage(text='心情不好的時候就到外面走走吧(*’-^*)')
+        line_bot_api.reply_message(event.reply_token, message2,_message2)
+    elif 0.15 > s1 and s1 >= 0.1:
+        message3 = TextSendMessage(text='今天的心情有些低落呢...。')
+        _message3 = TextSendMessage(text='心情不好的時候就到外面走走吧(*’-^*)')
+        line_bot_api.reply_message(event.reply_token, message3,_message3)
+    elif 0.2 > s1 and s1 >= 0.15:
+        message4 = TextSendMessage(text='今天發生什麼不愉快的事了嗎？')
+        _message4 = TextSendMessage(text='這時候就好好放鬆一下自己吧(*ˊ∀ˋ*)')
+        line_bot_api.reply_message(event.reply_token, message4,_message4)    
+    elif 0.25 > s1 and s1 >= 0.2:
+        message4 = TextSendMessage(text='怎麼了嗎？')
+        _message4 = TextSendMessage(text='不妨跟告解少女說說吧(*ˊ∀ˋ*)')
+        line_bot_api.reply_message(event.reply_token, message4,_message4)  
+    elif s1 >= 0.25:
+        s1 = TextSendMessage(text = s1.sentiments)    
+        line_bot_api.reply_message(event.reply_token, s1)
             
 import os
 
