@@ -84,13 +84,17 @@ def handle_message(event):
         _message5 = TextSendMessage(text='不妨跟告解少女說說吧(´▽ˋ)')
         line_bot_api.reply_message(event.reply_token, [message5,_message5])
     elif 0.3 > s1 and s1 >= 0.25:
-        message6 = TextSendMessage(text='今天看起來心情不好吶0.0')
-        _message6 = TextSendMessage(text='想不想來點音樂呢？')
+        message6 = TextSendMessage(text='今天很累了吧？')
+        _message6 = TextSendMessage(text='但是別灰心，告解少女會陪您一起度過所有煩惱的！')
         line_bot_api.reply_message(event.reply_token, [message6,_message6])
     elif 0.35 > s1 and s1 >= 0.3:
-        message7 = TextSendMessage(text='今天很累了吧？')
-        _message7 = TextSendMessage(text='但是別灰心，告解少女會陪您一起度過所有煩惱的！')
+        message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
+        _message7 = TextSendMessage(text='想不想來點音樂呢？')
         line_bot_api.reply_message(event.reply_token, [message7,_message7])
+    elif 0.4 > s1 and s1 >= 0.35:
+        message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
+        _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
+        line_bot_api.reply_message(event.reply_token, [message8,_message8])
     elif s1 >= 0.35:
         s1 = TextSendMessage(text = s1.sentiments)    
         line_bot_api.reply_message(event.reply_token, s1)
