@@ -100,10 +100,13 @@ def handle_message(event):
         _message9 = TextSendMessage(text='讓告解少女為您分擔吧！')
         line_bot_api.reply_message(event.reply_token, [message9,_message9])
     elif 0.5 > s1 and s1 >= 0.45:
+        message10 = TextSendMessage(text='請問發生什麼了嗎？')
+        line_bot_api.reply_message(event.reply_token, message10)
+    elif 0.55 > s1 and s1 >= 0.5:
         message10 = TextSendMessage(text='今天過得怎麼樣呢？')
         _message10 = TextSendMessage(text='一切都還順利嗎？')
-        line_bot_api.reply_message(event.reply_token, [message10,_message10])
-    elif s1 >= 0.45:
+        line_bot_api.reply_message(event.reply_token, [message10,_message10])    
+    elif s1 >= 0.55:
         s1 = TextSendMessage(text = s1.sentiments)    
         line_bot_api.reply_message(event.reply_token, s1)
             
