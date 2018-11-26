@@ -72,7 +72,7 @@ def handle_message(event):
         _message2 = TextSendMessage(text='任何事情都可以跟告解少女說喔(*’-^*)')
         line_bot_api.reply_message(event.reply_token, [message2,_message2])
     elif 0.15 > s1 and s1 >= 0.1:
-        message3 = TextSendMessage(text='今天的心情有些低落呢...。')
+        message3 = TextSendMessage(text='聽說透透氣對身心都很好呢。')
         _message3 = TextSendMessage(text='心情不好的時候就到外面走走吧(*･▽･*)')
         line_bot_api.reply_message(event.reply_token, [message3,_message3])
     elif 0.2 > s1 and s1 >= 0.15:
