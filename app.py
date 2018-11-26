@@ -95,7 +95,11 @@ def handle_message(event):
         message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
         _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
         line_bot_api.reply_message(event.reply_token, [message8,_message8])
-    elif s1 >= 0.35:
+    elif 0.45 > s1 and s1 >= 0.4:
+        message9 = TextSendMessage(text='今天也辛苦了呢！')
+        _message9 = TextSendMessage(text='讓告解少女為您分擔吧d(・∀＜)')
+        line_bot_api.reply_message(event.reply_token, [message9,_message9])
+    elif s1 >= 0.45:
         s1 = TextSendMessage(text = s1.sentiments)    
         line_bot_api.reply_message(event.reply_token, s1)
             
