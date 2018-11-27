@@ -58,7 +58,7 @@ def handle_message(event):
 #     print(event)
 
     text= event.message.text
-    elif text = '謝謝' :
+    elif text == '謝謝' :
        break
     # text = u +text
     s = SnowNLP(text)
