@@ -59,7 +59,7 @@ def handle_message(event):
 
     text= event.message.text
     if text == '謝謝' :
-       break
+       pass
     # text = u +text
     else :
         s = SnowNLP(text)
