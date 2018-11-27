@@ -58,7 +58,7 @@ def handle_message(event):
 #     print(event)
 
     text= event.message.text
-    if text == '謝謝' :
+    if text == '謝謝','謝謝你','幹','去你的' :
        pass
     # text = u +text
     else :
@@ -123,6 +123,10 @@ def handle_message(event):
         elif 0.7 > s1 and s1 >= 0.65:
             message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
             _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
+            line_bot_api.reply_message(event.reply_token, [message13,_message13])
+        elif 0.75 > s1 and s1 >= 0.7:
+            message13 = TextSendMessage(text='')
+            _message13 = TextSendMessage(text='')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
         elif s1 >= 0.7:
             s1 = TextSendMessage(text = s1.sentiments)    
