@@ -117,7 +117,7 @@ def handle_message(event):
         message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
         _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
         line_bot_api.reply_message(event.reply_token, [message13,_message13])
-    elif s1 >= 0.７:
+    elif s1 >= 0.7:
         s1 = TextSendMessage(text = s1.sentiments)    
         line_bot_api.reply_message(event.reply_token, s1)
             
