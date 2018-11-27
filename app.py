@@ -58,7 +58,7 @@ def handle_message(event):
 #     print(event)
 
     text= event.message.text
-    if text == '謝謝' and '謝謝你' and '幹' and '去你的' :
+    if text == '謝謝' and text == '謝謝你' and text == '幹' and text == '去你的' :
        pass
     # text = u +text
     else :
