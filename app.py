@@ -66,7 +66,8 @@ def Traditional2Simplified(sentence):
 if __name__=="__main__":
     simplified_sentence = event.message.text
     traditional_sentence = Simplified2Traditional(simplified_sentence)
-text= event.message.text  
+    
+text= simplified_sentence 
 s = SnowNLP(simplified_sentence)
 s1 = SnowNLP(s.sentences[0])
 s1 = s1.sentiments 
