@@ -63,7 +63,10 @@ def handle_message(event):
     elif text == '好的' or text == '知道了' :
         message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
         _message00 = TextSendMessage(text='請繼續加油吧！')
-        line_bot_api.reply_message(event.reply_token, [message00,_message00])
+        line_bot_api.reply_message(event.reply_token, [message00,_message00])    
+    elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
+        message01 = TextSendMessage(text='您好，請問今天有什麼事想和告解少女說的嗎？')
+        line_bot_api.reply_message(event.reply_token, message01)    
     # text = u +text
     else :
         s = SnowNLP(text)
@@ -107,12 +110,11 @@ def handle_message(event):
             _message9 = TextSendMessage(text='讓告解少女為您分擔吧！')
             line_bot_api.reply_message(event.reply_token, [message9,_message9])
         elif 0.5 > s1 and s1 >= 0.45:
-            message10 = TextSendMessage(text='請問發生什麼了嗎？')
+            _message10 = TextSendMessage(text='請問發生什麼了嗎？')
             line_bot_api.reply_message(event.reply_token, message10)
         elif 0.55 > s1 and s1 >= 0.5:
             message10 = TextSendMessage(text='今天過得怎麼樣呢？')
-            _message10 = TextSendMessage(text='一切都還順利嗎？')
-            line_bot_api.reply_message(event.reply_token, [message10,_message10])
+            line_bot_api.reply_message(event.reply_token, message10)
         elif 0.6 > s1 and s1 >= 0.55:
             message11 = TextSendMessage(text='今天也辛苦了呢！')
             _message11 = TextSendMessage(text='來和告解少女說說話吧～')
@@ -132,13 +134,12 @@ def handle_message(event):
             message13 = TextSendMessage(text='')
             _message13 = TextSendMessage(text='')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        else :
-            s = SnowNLP(text)
-            s1 = SnowNLP(s.sentences[0])
-            s1 = s1.sentiments 
-            s1 = TextSendMessage(text = s1.sentiments)    
-            line_bot_api.reply_message(event.reply_token, s1)
-            
+    text= event.message.text  
+    s = SnowNLP(text)
+    s1 = SnowNLP(s.sentences[0])
+    s1 = s1.sentiments 
+    s1 = TextSendMessage(text = s1.sentiments)    
+    line_bot_api.reply_message(event.reply_token, s1)
 import os
 
 if __name__ == "__main__":
