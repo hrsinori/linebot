@@ -61,7 +61,7 @@ def handle_message(event):
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' :
        pass
     # text = u +text
-    else :
+    elif :
         s = SnowNLP(text)
         s1 = SnowNLP(s.sentences[0])
         s1 = s1.sentiments
@@ -128,9 +128,12 @@ def handle_message(event):
             message13 = TextSendMessage(text='')
             _message13 = TextSendMessage(text='')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        elif s1 >= 0.7:
-            s1 = TextSendMessage(text = s1.sentiments)    
-            line_bot_api.reply_message(event.reply_token, s1)
+    else :
+        s = SnowNLP(text)
+        s1 = SnowNLP(s.sentences[0])
+        s1 = s1.sentiments 
+        s1 = TextSendMessage(text = s1.sentiments)    
+        line_bot_api.reply_message(event.reply_token, s1)
             
 import os
 
