@@ -106,17 +106,17 @@ def handle_message(event):
             _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
             line_bot_api.reply_message(event.reply_token, [message8,_message8])
         elif 0.45 > s1 and s1 >= 0.4:
-            message9 = TextSendMessage(text='今天也辛苦了呢！')
-            _message9 = TextSendMessage(text='讓告解少女為您分擔吧！')
-            line_bot_api.reply_message(event.reply_token, [message9,_message9])
+            message9 = TextSendMessage(text='事情總會好起來的，所以請您也打起精神吧！')
+            line_bot_api.reply_message(event.reply_token, message9)
         elif 0.5 > s1 and s1 >= 0.45:
-            _message10 = TextSendMessage(text='請問發生什麼了嗎？')
-            line_bot_api.reply_message(event.reply_token, message10)
+            message10 = TextSendMessage(text='今天也辛苦了呢！')
+            _message10 = TextSendMessage(text='讓告解少女為您分擔吧！')
+            line_bot_api.reply_message(event.reply_token, [message10,_message10])
         elif 0.55 > s1 and s1 >= 0.5:
-            message10 = TextSendMessage(text='今天過得怎麼樣呢？')
+            message10 = TextSendMessage(text='請問您今天還好嗎？')
             line_bot_api.reply_message(event.reply_token, message10)
         elif 0.6 > s1 and s1 >= 0.55:
-            message11 = TextSendMessage(text='今天也辛苦了呢！')
+            message11 = TextSendMessage(text='今天也辛苦了！')
             _message11 = TextSendMessage(text='來和告解少女說說話吧～')
             line_bot_api.reply_message(event.reply_token, [message11,_message11])
         elif 0.65 > s1 and s1 >= 0.6:
@@ -131,8 +131,8 @@ def handle_message(event):
             _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
         elif 0.75 > s1 and s1 >= 0.7:
-            message13 = TextSendMessage(text='')
-            _message13 = TextSendMessage(text='')
+            message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
+            _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
     text= event.message.text  
     s = SnowNLP(text)
