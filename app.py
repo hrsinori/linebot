@@ -61,7 +61,7 @@ def handle_message(event):
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' :
        pass
     # text = u +text
-    elif :
+    else :
         s = SnowNLP(text)
         s1 = SnowNLP(s.sentences[0])
         s1 = s1.sentiments
