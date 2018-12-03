@@ -115,19 +115,22 @@ def handle_message(event):
         elif 0.35 > s1 and s1 >= 0.3:
             message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
             _message7 = TextSendMessage(text='想不想來點音樂呢？')
-            message7_ = TemplateSendMessage(
-                alt_text='想要來點音樂嗎',
-                template=ConfirmTemplate(
-                    text='想要來點音樂嗎',
+            message7_ =　TemplateSendMessage(
+                alt_text='Buttons template',
+                template=ButtonsTemplate(
+                    thumbnail_image_url='https://i.imgur.com/03yx2oc.png',
+                    title='請問您想要來點音樂嗎？',
                     actions=[
                         PostbackTemplateAction(
                             label='YES',
-                            text='好噠！',
-                            data='https://www.youtube.com/watch?v=53Ohu8fkRoQ'
+                            data='action=buy&itemid=1'
                         ),
                         MessageTemplateAction(
                             label='NO',
-                            text='不了，謝謝。'
+                        ),
+                        URITemplateAction(
+                            label='uri',
+                            uri='https://www.youtube.com/watch?v=53Ohu8fkRoQ'
                         )
                     ]
                 )
