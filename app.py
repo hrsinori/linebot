@@ -128,7 +128,6 @@ def handle_message(event):
                         MessageTemplateAction(
                             label='NO',
                             text='不了，謝謝。'
-                            data= '好吧，不過如果有發生任何事情，請您務必讓告解少女知道喔！'
                         )
                     ]
                 )
