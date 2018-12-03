@@ -60,21 +60,15 @@ def handle_message(event):
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
 #     print(event)
-def Traditional2Simplified(sentence):
-    sentence = Converter('zh-hans').convert(sentence)
-    return sentence
-if __name__=="__main__":
-    simplified_sentence = event.message.text
-    traditional_sentence = Simplified2Traditional(simplified_sentence)
     
-text= simplified_sentence 
-s = SnowNLP(simplified_sentence)
+text= event.message.text 
+s = SnowNLP(text)
 s1 = SnowNLP(s.sentences[0])
 s1 = s1.sentiments 
 s1 = TextSendMessage(text = s1.sentiments)    
 line_bot_api.reply_message(event.reply_token, s1)
     
-    '''
+    
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' :
        pass
     elif text == '好的' or text == '知道了' :
@@ -151,7 +145,7 @@ line_bot_api.reply_message(event.reply_token, s1)
             message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
             _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        '''   
+          
 import os
 
 if __name__ == "__main__":
