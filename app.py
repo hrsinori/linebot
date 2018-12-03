@@ -125,7 +125,7 @@ def handle_message(event):
             _message10 = TextSendMessage(text='讓告解少女為您分擔吧！')
             line_bot_api.reply_message(event.reply_token, [message10,_message10])
         elif 0.55 > s1 and s1 >= 0.5:
-            message10 = TextSendMessage(text='請問您今天還好嗎？')
+            message10 = TextSendMessage(text='請問今天發生了什麼樣的事情呢？')
             line_bot_api.reply_message(event.reply_token, message10)
         elif 0.6 > s1 and s1 >= 0.55:
             message11 = TextSendMessage(text='今天也辛苦了！')
