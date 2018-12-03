@@ -70,7 +70,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, s1)
     '''    
     
-    if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' :
+    if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
        pass
     elif text == '好的' or text == '知道了' :
         message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
