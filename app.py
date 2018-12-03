@@ -115,27 +115,7 @@ def handle_message(event):
         elif 0.35 > s1 and s1 >= 0.3:
             message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
             _message7 = TextSendMessage(text='想不想來點音樂呢？')
-            message7_ =　TemplateSendMessage(
-                alt_text='Buttons template',
-                template=ButtonsTemplate(
-                    thumbnail_image_url='https://i.imgur.com/03yx2oc.png',
-                    title='請問您想要來點音樂嗎？',
-                    actions=[
-                        PostbackTemplateAction(
-                            label='YES',
-                            data='action=buy&itemid=1'
-                        ),
-                        MessageTemplateAction(
-                            label='NO',
-                        ),
-                        URITemplateAction(
-                            label='uri',
-                            uri='https://www.youtube.com/watch?v=53Ohu8fkRoQ'
-                        )
-                    ]
-                )
-            )
-            line_bot_api.reply_message(event.reply_token, [message7,_message7,message7_])
+            line_bot_api.reply_message(event.reply_token, [message7,_message7])
         elif 0.4 > s1 and s1 >= 0.35:
             message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
             _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
