@@ -116,18 +116,19 @@ def handle_message(event):
             message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
             _message7 = TextSendMessage(text='想不想來點音樂呢？')
             message7_ = TemplateSendMessage(
-                alt_text='Confirm template',
+                alt_text='想要來點音樂嗎',
                 template=ConfirmTemplate(
                     text='想要來點音樂嗎',
                     actions=[
                         PostbackTemplateAction(
-                            label='postback',
-                            text='postback text',
-                            data='action=buy&itemid=1'
+                            label='YES',
+                            text='好噠！',
+                            data='https://www.youtube.com/watch?v=53Ohu8fkRoQ'
                         ),
                         MessageTemplateAction(
-                            label='message',
-                            text='message text'
+                            label='NO',
+                            text='不了，謝謝。'
+                            data= '好吧，不過如果有發生任何事情，請您務必讓告解少女知道喔！'
                         )
                     ]
                 )
