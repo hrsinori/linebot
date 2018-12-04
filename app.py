@@ -60,10 +60,7 @@ def handle_message(event):
 #     _message = TextSendMessage(text=(event.source.user_id)) #reply userid
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
-#     print(event) 
-'''
-    text= event.message.text 
-'''    
+#     print(event)    
     if event.message.text != "":
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
@@ -89,6 +86,7 @@ def handle_message(event):
                 return textt   
 
     '''
+    text= event.message.text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1 = s1.sentiments 
