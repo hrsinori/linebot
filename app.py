@@ -20,30 +20,6 @@ from snownlp import seg
 import sys
 import datetime
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials as SAC
-    if event.message.text != "":
-        message = TextSendMessage(text='紀錄成功')
-        line_bot_api.reply_message(event.reply_token,message)
-        pass
-        #GDriveJSON就輸入下載下來Json檔名稱
-        #GSpreadSheet是google試算表名稱
-        GDriveJSON = 'time.json'
-        GSpreadSheet = 'time'
-        while True:
-            try:
-                scope = ['https://docs.google.com/spreadsheets/d/1c9xHwgBWUH4XW6EhGDdi6uIwH9IkQ8nq3fcAA2PL-Go/edit?usp=sharing']
-                key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-                gc = gspread.authorize(key)
-                worksheet = gc.open(GSpreadSheet).sheet1
-            except Exception as ex:
-                print('無法連線Google試算表', ex)
-                sys.exit(1)
-            textt=""
-            textt+=event.message.text
-            if textt!="":
-                worksheet.append_row((datetime.datetime.now(), textt))
-                print('新增一列資料到試算表' ,GSpreadSheet)
-                return textt   
 
 app = Flask(__name__)
 
@@ -92,6 +68,31 @@ def handle_message(event):
     s1.sentiments 
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
+    
+    from oauth2client.service_account import ServiceAccountCredentials as SAC
+    if event.message.text != "":
+        message = TextSendMessage(text='紀錄成功')
+        line_bot_api.reply_message(event.reply_token,message)
+        pass
+        #GDriveJSON就輸入下載下來Json檔名稱
+        #GSpreadSheet是google試算表名稱
+        GDriveJSON = 'time.json'
+        GSpreadSheet = 'time'
+        while True:
+            try:
+                scope = ['https://docs.google.com/spreadsheets/d/1c9xHwgBWUH4XW6EhGDdi6uIwH9IkQ8nq3fcAA2PL-Go/edit?usp=sharing']
+                key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+                gc = gspread.authorize(key)
+                worksheet = gc.open(GSpreadSheet).sheet1
+            except Exception as ex:
+                print('無法連線Google試算表', ex)
+                sys.exit(1)
+            textt=""
+            textt+=event.message.text
+            if textt!="":
+                worksheet.append_row((datetime.datetime.now(), textt))
+                print('新增一列資料到試算表' ,GSpreadSheet)
+                return textt   
 
 '''
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
