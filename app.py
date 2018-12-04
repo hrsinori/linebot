@@ -62,7 +62,7 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)    
 
-    text= event.message.text
+    text= u + event.message.text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1 = s1.sentiments 
