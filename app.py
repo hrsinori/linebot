@@ -15,6 +15,7 @@ from linebot.exceptions import (
 from linebot.models import *
 
 from snownlp import SnowNLP
+from snownlp import seg
 
 import sys
 import datetime
@@ -62,7 +63,8 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)    
 
-    text= u + event.message.text
+    text= event.message.text
+    text=u+text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1 = s1.sentiments 
