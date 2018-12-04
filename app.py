@@ -61,7 +61,9 @@ def handle_message(event):
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
 #     print(event) 
+'''
     text= event.message.text 
+'''    
     if event.message.text != "":
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
