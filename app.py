@@ -21,7 +21,7 @@ import sys
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
-    if event.message.text != '':
+    if event.message.text != "":
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
         pass
@@ -38,9 +38,9 @@ from oauth2client.service_account import ServiceAccountCredentials as SAC
             except Exception as ex:
                 print('無法連線Google試算表', ex)
                 sys.exit(1)
-            textt=''
+            textt=""
             textt+=event.message.text
-            if textt!='':
+            if textt!="":
                 worksheet.append_row((datetime.datetime.now(), textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt   
