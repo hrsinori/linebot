@@ -60,8 +60,9 @@ def handle_message(event):
 #     _message = TextSendMessage(text=(event.source.user_id)) #reply userid
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
-#     print(event)
-if event.message.text != "":
+#     print(event) 
+    text= event.message.text 
+    if event.message.text != "":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="紀錄成功"))
         pass
         #GDriveJSON就輸入下載下來Json檔名稱
@@ -82,8 +83,7 @@ if event.message.text != "":
             if textt!="":
                 worksheet.append_row((datetime.datetime.now(), textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
-                return textt  
-    text= event.message.text 
+                return textt 
     '''
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
