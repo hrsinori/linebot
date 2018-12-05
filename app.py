@@ -80,7 +80,7 @@ def handle_message(event):
         GSpreadSheet = 'time'
         while True:
             try:
-                scope = ['https://docs.google.com/spreadsheets/d/1c9xHwgBWUH4XW6EhGDdi6uIwH9IkQ8nq3fcAA2PL-Go/edit?usp=sharing']
+                scope = ['https://spreadsheets.google.com/feeds/list//d/e/2PACX-1vTxz0iEcEzQ3-3ipzAQhFuMAMzBny1b5jL91td59cutalPb2tzbo490FGmWkXABde-V3CbxX-FS5_U7/pubhtml/od6/public/values?alt=json']
                 key = SAC.from_json_keyfile_name(GDriveJSON, scope)
                 gc = gspread.authorize(key)
                 worksheet = gc.open(GSpreadSheet).sheet1
