@@ -20,6 +20,7 @@ from snownlp import seg
 import sys
 import datetime
 import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 app = Flask(__name__)
 
@@ -69,7 +70,6 @@ def handle_message(event):
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
     
-    from oauth2client.service_account import ServiceAccountCredentials as SAC
     if event.message.text != "":
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
