@@ -62,12 +62,12 @@ def handle_message(event):
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
 #     print(event)    
-    
+    '''
     if event.message.text != "":
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
         pass
-                   '''
+                   
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'time.json'
