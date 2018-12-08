@@ -24,9 +24,8 @@ from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 app = Flask(__name__)
 
-ACCESS_TOKEN= os.environ['X8djX/Bwo9Fz/hpU+HPVMwQAwibBCEJV8JvAD2jJKEudwm7v8RJKz/0lt7Um0VHFQxPDPE2z+/j45q1QmQbJbUrqxdn7psQGMaW650TT0WfWgdyW8xmAtK5SRflgAVEKcKDVErE/P1aLd+kIMrRQTwdB04t89/1O/w1cDnyilFU=']
-SECRET= os.environ['ea59d8332ee76af801f70e502bf9ea8f
-']
+ACCESS_TOKEN= os.environ['ACCESS_TOKEN']
+SECRET= os.environ['CHANNEL_SECRET']
 
 # Channel Access Token
 line_bot_api = LineBotApi(ACCESS_TOKEN)
@@ -89,13 +88,14 @@ def handle_message(event):
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt   
 
-
+'''
     text= event.message.text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1.sentiments 
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
+                   '''
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
        pass
     elif text == '好的' or text == '知道了' or text == '好喔' :
