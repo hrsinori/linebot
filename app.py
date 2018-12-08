@@ -24,8 +24,9 @@ from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 app = Flask(__name__)
 
-ACCESS_TOKEN= os.environ['ACCESS_TOKEN']
-SECRET= os.environ['CHANNEL_SECRET']
+ACCESS_TOKEN= os.environ['X8djX/Bwo9Fz/hpU+HPVMwQAwibBCEJV8JvAD2jJKEudwm7v8RJKz/0lt7Um0VHFQxPDPE2z+/j45q1QmQbJbUrqxdn7psQGMaW650TT0WfWgdyW8xmAtK5SRflgAVEKcKDVErE/P1aLd+kIMrRQTwdB04t89/1O/w1cDnyilFU=']
+SECRET= os.environ['ea59d8332ee76af801f70e502bf9ea8f
+']
 
 # Channel Access Token
 line_bot_api = LineBotApi(ACCESS_TOKEN)
@@ -67,6 +68,7 @@ def handle_message(event):
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
         pass
+                   '''
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'time.json'
@@ -87,7 +89,7 @@ def handle_message(event):
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt   
 
-'''
+
     text= event.message.text
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
