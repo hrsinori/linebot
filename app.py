@@ -63,6 +63,10 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)    
     text= event.message.text
+    if event.message.text != "":
+        message = TextSendMessage(text='紀錄成功')
+        line_bot_api.reply_message(event.reply_token,message)
+        pass
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'https://github.com/hrsinori0214/linebot/edit/master/time.json'
@@ -90,15 +94,7 @@ def handle_message(event):
     s1.sentiments 
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
-    
-    
-    if event.message.text != "":
-        message = TextSendMessage(text='紀錄成功')
-        line_bot_api.reply_message(event.reply_token,message)
-        pass
-                   
   
-
                    
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
        pass
