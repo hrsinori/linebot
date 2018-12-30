@@ -88,7 +88,7 @@ def handle_message(event):
                     worksheet.append_row((str(datetime.datetime.now()),textt))
                     print('新增一列資料到試算表' ,GSpreadSheet)
                     return textt 
-'''
+
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1.sentiments 
@@ -175,7 +175,7 @@ def handle_message(event):
             message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
             _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
             line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        '''  
+          
 import os
 
 if __name__ == "__main__":
