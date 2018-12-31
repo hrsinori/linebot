@@ -185,6 +185,21 @@ def handle_message(event):
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt 
+        #開關	
+        count=0
+        #以下3個變數作為加總的時候用的 	
+        number=0
+        for i in values:
+            if count==0:
+                count+=1
+                continue
+        outputvalue = 'number{}'.format(number)
+        return outputvalue
+    if text == '紀錄查詢' :
+        n = number/count
+        message20 = TextSendMessage(text='近期情緒平均指數：'+ n )
+        line_bot_api.reply_message(event.reply_token, [message20]) 
+
 import os
 
 if __name__ == "__main__":
