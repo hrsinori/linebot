@@ -64,11 +64,10 @@ def handle_message(event):
 #     print(event)    
     text= event.message.text
     if event.message.text != "":
-        '''
-        message = TextSendMessage(text='紀錄成功')
-        line_bot_api.reply_message(event.reply_token,message)
-        pass
-        '''
+        s = SnowNLP(text)
+        s1 = SnowNLP(s.sentences[0])
+        s1.sentiments   
+
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'time.json'
@@ -85,7 +84,7 @@ def handle_message(event):
                     print('無法連線Google試算表', ex)
                     sys.exit(1)
                 textt=""
-                textt+=event.message.text
+                textt+=s1
                 if textt!="":
                     worksheet.append_row((str(datetime.datetime.now()),textt))
                     print('新增一列資料到試算表' ,GSpreadSheet)
@@ -99,7 +98,8 @@ def handle_message(event):
     ''' 
                    
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
-           pass       
+           pass
+    '''    
     elif text == '健康資訊' :
                 messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
                 line_bot_api.reply_message(event.reply_token, messageG)
@@ -128,7 +128,7 @@ def handle_message(event):
                     # 網址
                     messageG2 = TextSendMessage('網址：' + i.get('href'))
                     line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
-
+    '''
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
