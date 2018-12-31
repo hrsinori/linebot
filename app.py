@@ -66,7 +66,8 @@ def handle_message(event):
     if event.message.text != "":
         s = SnowNLP(text)
         s1 = SnowNLP(s.sentences[0])
-        s1.sentiments   
+        s1.sentiments  
+        text = s1
 
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
@@ -84,7 +85,7 @@ def handle_message(event):
                     print('無法連線Google試算表', ex)
                     sys.exit(1)
                 textt=""
-                textt+=s1
+                textt+=text
                 if textt!="":
                     worksheet.append_row((str(datetime.datetime.now()),textt))
                     print('新增一列資料到試算表' ,GSpreadSheet)
