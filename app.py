@@ -88,7 +88,35 @@ def handle_message(event):
                     worksheet.append_row((str(datetime.datetime.now()),textt))
                     print('新增一列資料到試算表' ,GSpreadSheet)
                     return textt 
+   if text == '健康資訊'
+        messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
+        line_bot_api.reply_message(event.reply_token, messageG)
+        # Google 搜尋 URL
+        google_url = 'https://www.google.com.tw/search?q='
 
+        # 查詢參數
+        my_params = {'q': text}
+
+        # 下載 Google 搜尋結果
+        r = requests.get(google_url, params = my_params)
+
+        # 確認是否下載成功
+        if r.status_code == requests.codes.ok:
+          # 以 BeautifulSoup 解析 HTML 原始碼
+          soup = BeautifulSoup(r.text, 'html.parser')
+
+          # 觀察 HTML 原始碼
+          # print(soup.prettify())
+
+          # 以 CSS 的選擇器來抓取 Google 的搜尋結果
+          items = soup.select('div.g > h3.r > a[href^="/url"]')
+          for i in items:
+            # 標題
+            messageG1 = TextSendMessage('標題：' + i.text)
+            # 網址
+            messageG2 = TextSendMessage('網址：' + i.get('href'))
+            line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
+                
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1.sentiments 
@@ -174,7 +202,7 @@ def handle_message(event):
         elif 0.75 > s1 and s1 >= 0.7:
             message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
             _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
-            line_bot_api.reply_message(event.reply_token, [message13,_message13])
+            line_bot_api.reply_message(event.reply_token, [message13,_message13])          
           
 import os
 
