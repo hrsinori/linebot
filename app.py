@@ -99,36 +99,7 @@ def handle_message(event):
                    
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass
-    '''    
-    elif text == '健康資訊' :
-                messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
-                line_bot_api.reply_message(event.reply_token, messageG)
-                # Google 搜尋 URL
-                google_url = 'https://www.google.com.tw/search?q='
 
-                # 查詢參數
-                my_params = {'q': '心理健康'}
-
-                # 下載 Google 搜尋結果
-                r = requests.get(google_url, params = my_params)
-
-                # 確認是否下載成功
-                if r.status_code == requests.codes.ok:
-                  # 以 BeautifulSoup 解析 HTML 原始碼
-                  soup = BeautifulSoup(r.text, 'html.parser')
-
-                  # 觀察 HTML 原始碼
-                  # print(soup.prettify())
-
-                  # 以 CSS 的選擇器來抓取 Google 的搜尋結果
-                  items = soup.select('div.g > h3.r > a[href^="/url"]')
-                  for i in items:
-                    # 標題
-                    messageG1 = TextSendMessage('標題：' + i.text)
-                    # 網址
-                    messageG2 = TextSendMessage('網址：' + i.get('href'))
-                    line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
-    '''
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
