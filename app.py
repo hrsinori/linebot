@@ -79,10 +79,18 @@ def handle_message(event):
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
-            line_bot_api.reply_message(event.reply_token, [message00,_message00])    
+            message00_ = ImageSendMessage(
+            original_content_url='https://i.imgur.com/TIB3QUp.jpg',
+            preview_image_url='https://i.imgur.com/TIB3QUp.jpg'
+            )
+            line_bot_api.reply_message(event.reply_token, [message00,_message00,message00_])    
     elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
             message01 = TextSendMessage(text='您好，請問今天有什麼事想和告解少女說的嗎？')
-            line_bot_api.reply_message(event.reply_token, message01)    
+            message01_ = ImageSendMessage(
+            original_content_url='https://i.imgur.com/xfPwnn8.jpg',
+            preview_image_url='https://i.imgur.com/xfPwnn8.jpg'
+            )
+            line_bot_api.reply_message(event.reply_token, [message01,message01_])    
     elif text == '跟你說喔' or text == '我跟你說' :
             message02 = TextSendMessage(text='請問怎麼了嗎？')
             line_bot_api.reply_message(event.reply_token, message02)    
