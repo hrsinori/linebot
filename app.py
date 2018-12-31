@@ -188,12 +188,12 @@ def handle_message(event):
         count=0
         #以下3個變數作為加總的時候用的 	
         number=0
-         for i in values:
+        for i in values:
              if count==0:
                  count+=1
                  continue
-         outputvalue = 'number{}'.format(number)
-         return outputvalue 
+        outputvalue = 'number{}'.format(number)
+        return outputvalue 
  
 
 import os
