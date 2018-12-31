@@ -98,9 +98,9 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, s1)
     ''' 
                    
-        if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
+    if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass       
-        elif text == '健康資訊' :
+    elif text == '健康資訊' :
                 messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
                 line_bot_api.reply_message(event.reply_token, messageG)
                 # Google 搜尋 URL
@@ -129,18 +129,18 @@ def handle_message(event):
                     messageG2 = TextSendMessage('網址：' + i.get('href'))
                     line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
 
-        elif text == '好的' or text == '知道了' or text == '好喔' :
+    elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
             line_bot_api.reply_message(event.reply_token, [message00,_message00])    
-        elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
+    elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
             message01 = TextSendMessage(text='您好，請問今天有什麼事想和告解少女說的嗎？')
             line_bot_api.reply_message(event.reply_token, message01)    
-        elif text == '跟你說喔' or text == '我跟你說' :
+    elif text == '跟你說喔' or text == '我跟你說' :
             message02 = TextSendMessage(text='請問怎麼了嗎？')
             line_bot_api.reply_message(event.reply_token, message02)    
         # text = u +text
-        else :
+    else :
             s = SnowNLP(text)
             s1 = SnowNLP(s.sentences[0])
             s1 = s1.sentiments
