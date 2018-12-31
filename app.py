@@ -192,16 +192,16 @@ def gettotal():
     GDriveJSON = 'time.json'
     GSpreadSheet = 'time'
     while True:
-	  try:
-              #scope = ['https://spreadsheets.google.com/feeds']
-              scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-              key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-              gc = gspread.authorize(key)
-              worksheet = gc.open(GSpreadSheet).sheet1
-	      res = requests.get(scope)
-	      data = res.content
-	jsondata = json.loads(data)
-	values = jsondata['time']
+	try:
+            #scope = ['https://spreadsheets.google.com/feeds']
+	    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+	    key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+	    gc = gspread.authorize(key)
+	    worksheet = gc.open(GSpreadSheet).sheet1
+    res = requests.get(scope)
+    data = res.content
+    jsondata = json.loads(data)
+    values = jsondata['time']
     #開關	
     count=0
     #以下3個變數作為加總的時候用的 	
