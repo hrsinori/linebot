@@ -75,6 +75,10 @@ def handle_message(event):
     ''' 
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass
+    elif text == '紀錄查詢' :
+    n = outputvalue/count
+    message20 = TextSendMessage(text='近期情緒平均指數：'+ n )
+    line_bot_api.reply_message(event.reply_token, [message20])    
 
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
@@ -195,10 +199,7 @@ def handle_message(event):
                     continue
             outputvalue = 'number{}'.format(number)
             return outputvalue
-        if text == '紀錄查詢' :
-             n = outputvalue/count
-             message20 = TextSendMessage(text='近期情緒平均指數：'+ n )
-             line_bot_api.reply_message(event.reply_token, [message20]) 
+ 
 
 import os
 
