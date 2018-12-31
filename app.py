@@ -118,8 +118,11 @@ def handle_message(event):
                 _message7 = TextSendMessage(text='想不想來點音樂呢？')
                 line_bot_api.reply_message(event.reply_token, [message7,_message7])
             elif 0.4 > s1 and s1 >= 0.35:
-                    c=s1.sentiments
-                    d=str(c)
+                message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
+                _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
+                line_bot_api.reply_message(event.reply_token, [message8,_message8])
+                c=s1
+                d=str(c)
 
                     if text != "":
                         #GDriveJSON就輸入下載下來Json檔名稱
@@ -143,9 +146,6 @@ def handle_message(event):
                                     worksheet.append_row((str(datetime.datetime.now()),textt))
                                     print('新增一列資料到試算表' ,GSpreadSheet)
                                     return textt 
-                message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
-                _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
-                line_bot_api.reply_message(event.reply_token, [message8,_message8])
             elif 0.45 > s1 and s1 >= 0.4:
                 message9 = TextSendMessage(text='事情總會好起來的，所以請您也打起精神吧！')
                 line_bot_api.reply_message(event.reply_token, message9)
