@@ -64,9 +64,11 @@ def handle_message(event):
 #     print(event)    
     text= event.message.text
     if event.message.text != "":
+        '''
         message = TextSendMessage(text='紀錄成功')
         line_bot_api.reply_message(event.reply_token,message)
         pass
+        '''
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'time.json'
@@ -96,114 +98,114 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, s1)
     ''' 
                    
-    if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
-       pass       
-    elif text == '健康資訊' :
-            messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
-            line_bot_api.reply_message(event.reply_token, messageG)
-            # Google 搜尋 URL
-            google_url = 'https://www.google.com.tw/search?q='
+        if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
+           pass       
+        elif text == '健康資訊' :
+                messageG = TextSendMessage(text='請問您想了解哪方面的資訊呢？')
+                line_bot_api.reply_message(event.reply_token, messageG)
+                # Google 搜尋 URL
+                google_url = 'https://www.google.com.tw/search?q='
 
-            # 查詢參數
-            my_params = {'q': '心理健康'}
+                # 查詢參數
+                my_params = {'q': '心理健康'}
 
-            # 下載 Google 搜尋結果
-            r = requests.get(google_url, params = my_params)
+                # 下載 Google 搜尋結果
+                r = requests.get(google_url, params = my_params)
 
-            # 確認是否下載成功
-            if r.status_code == requests.codes.ok:
-              # 以 BeautifulSoup 解析 HTML 原始碼
-              soup = BeautifulSoup(r.text, 'html.parser')
+                # 確認是否下載成功
+                if r.status_code == requests.codes.ok:
+                  # 以 BeautifulSoup 解析 HTML 原始碼
+                  soup = BeautifulSoup(r.text, 'html.parser')
 
-              # 觀察 HTML 原始碼
-              # print(soup.prettify())
+                  # 觀察 HTML 原始碼
+                  # print(soup.prettify())
 
-              # 以 CSS 的選擇器來抓取 Google 的搜尋結果
-              items = soup.select('div.g > h3.r > a[href^="/url"]')
-              for i in items:
-                # 標題
-                messageG1 = TextSendMessage('標題：' + i.text)
-                # 網址
-                messageG2 = TextSendMessage('網址：' + i.get('href'))
-                line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
+                  # 以 CSS 的選擇器來抓取 Google 的搜尋結果
+                  items = soup.select('div.g > h3.r > a[href^="/url"]')
+                  for i in items:
+                    # 標題
+                    messageG1 = TextSendMessage('標題：' + i.text)
+                    # 網址
+                    messageG2 = TextSendMessage('網址：' + i.get('href'))
+                    line_bot_api.reply_message(event.reply_token, [messageG1,_messageG2])
 
-    elif text == '好的' or text == '知道了' or text == '好喔' :
-        message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
-        _message00 = TextSendMessage(text='請繼續加油吧！')
-        line_bot_api.reply_message(event.reply_token, [message00,_message00])    
-    elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
-        message01 = TextSendMessage(text='您好，請問今天有什麼事想和告解少女說的嗎？')
-        line_bot_api.reply_message(event.reply_token, message01)    
-    elif text == '跟你說喔' or text == '我跟你說' :
-        message02 = TextSendMessage(text='請問怎麼了嗎？')
-        line_bot_api.reply_message(event.reply_token, message02)    
-    # text = u +text
-    else :
-        s = SnowNLP(text)
-        s1 = SnowNLP(s.sentences[0])
-        s1 = s1.sentiments
-        if 0.05 > s1 and s1 >= 0:
-            _message1 = TextSendMessage(text='今天的您令人有些擔心呢。')
-            message1 = TextSendMessage(text='請問您需要幫助，或是找人聊聊嗎？')
-            message1_ = TextSendMessage(text='告解少女隨時都在您身邊喔(*・∀-)')
-            line_bot_api.reply_message(event.reply_token,[_message1, message1, message1_])
-        elif 0.1 > s1 and s1 >= 0.05:
-            message2 = TextSendMessage(text='請問您還好嗎？')
-            _message2 = TextSendMessage(text='任何事情都可以跟告解少女說喔(*’-^*)')
-            line_bot_api.reply_message(event.reply_token, [message2,_message2])
-        elif 0.15 > s1 and s1 >= 0.1:
-            message3 = TextSendMessage(text='聽說透透氣對身心都很好呢。')
-            _message3 = TextSendMessage(text='心情不好的時候就到外面走走吧(*･▽･*)')
-            line_bot_api.reply_message(event.reply_token, [message3,_message3])
-        elif 0.2 > s1 and s1 >= 0.15:
-            message4 = TextSendMessage(text='今天發生什麼不愉快的事了嗎？')
-            _message4 = TextSendMessage(text='這時候就好好放鬆一下自己吧(*ˊ∀ˋ*)')
-            line_bot_api.reply_message(event.reply_token, [message4,_message4])    
-        elif 0.25 > s1 and s1 >= 0.2:
-            message5 = TextSendMessage(text='怎麼了嗎？')
-            _message5 = TextSendMessage(text='不妨跟告解少女說說吧(´▽ˋ)')
-            line_bot_api.reply_message(event.reply_token, [message5,_message5])
-        elif 0.3 > s1 and s1 >= 0.25:
-            message6 = TextSendMessage(text='今天很累了吧？')
-            _message6 = TextSendMessage(text='但是別灰心，告解少女會陪您一起度過所有煩惱的！')
-            line_bot_api.reply_message(event.reply_token, [message6,_message6])
-        elif 0.35 > s1 and s1 >= 0.3:
-            message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
-            _message7 = TextSendMessage(text='想不想來點音樂呢？')
-            line_bot_api.reply_message(event.reply_token, [message7,_message7])
-        elif 0.4 > s1 and s1 >= 0.35:
-            message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
-            _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
-            line_bot_api.reply_message(event.reply_token, [message8,_message8])
-        elif 0.45 > s1 and s1 >= 0.4:
-            message9 = TextSendMessage(text='事情總會好起來的，所以請您也打起精神吧！')
-            line_bot_api.reply_message(event.reply_token, message9)
-        elif 0.5 > s1 and s1 >= 0.45:
-            message10 = TextSendMessage(text='今天也辛苦了呢！')
-            _message10 = TextSendMessage(text='讓告解少女為您分擔吧！')
-            line_bot_api.reply_message(event.reply_token, [message10,_message10])
-        elif 0.55 > s1 and s1 >= 0.5:
-            message10 = TextSendMessage(text='請問今天發生了什麼樣的事情呢？')
-            line_bot_api.reply_message(event.reply_token, message10)
-        elif 0.6 > s1 and s1 >= 0.55:
-            message11 = TextSendMessage(text='今天也辛苦了！')
-            _message11 = TextSendMessage(text='來和告解少女說說話吧～')
-            line_bot_api.reply_message(event.reply_token, [message11,_message11])
-        elif 0.65 > s1 and s1 >= 0.6:
-            message12 = TextSendMessage(text='您看起來心情不錯呢(*ˊ∀ˋ*)')
-            line_bot_api.reply_message(event.reply_token, message12)
-        elif 0.7 > s1 and s1 >= 0.65:
-            message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
-            _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
-            line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        elif 0.7 > s1 and s1 >= 0.65:
-            message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
-            _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
-            line_bot_api.reply_message(event.reply_token, [message13,_message13])
-        elif 0.75 > s1 and s1 >= 0.7:
-            message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
-            _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
-            line_bot_api.reply_message(event.reply_token, [message13,_message13])          
+        elif text == '好的' or text == '知道了' or text == '好喔' :
+            message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
+            _message00 = TextSendMessage(text='請繼續加油吧！')
+            line_bot_api.reply_message(event.reply_token, [message00,_message00])    
+        elif text == '你好' or text == '妳好' or text == '哈囉' or text == 'hello' or text == 'Hello' or text == '嗨' :
+            message01 = TextSendMessage(text='您好，請問今天有什麼事想和告解少女說的嗎？')
+            line_bot_api.reply_message(event.reply_token, message01)    
+        elif text == '跟你說喔' or text == '我跟你說' :
+            message02 = TextSendMessage(text='請問怎麼了嗎？')
+            line_bot_api.reply_message(event.reply_token, message02)    
+        # text = u +text
+        else :
+            s = SnowNLP(text)
+            s1 = SnowNLP(s.sentences[0])
+            s1 = s1.sentiments
+            if 0.05 > s1 and s1 >= 0:
+                _message1 = TextSendMessage(text='今天的您令人有些擔心呢。')
+                message1 = TextSendMessage(text='請問您需要幫助，或是找人聊聊嗎？')
+                message1_ = TextSendMessage(text='告解少女隨時都在您身邊喔(*・∀-)')
+                line_bot_api.reply_message(event.reply_token,[_message1, message1, message1_])
+            elif 0.1 > s1 and s1 >= 0.05:
+                message2 = TextSendMessage(text='請問您還好嗎？')
+                _message2 = TextSendMessage(text='任何事情都可以跟告解少女說喔(*’-^*)')
+                line_bot_api.reply_message(event.reply_token, [message2,_message2])
+            elif 0.15 > s1 and s1 >= 0.1:
+                message3 = TextSendMessage(text='聽說透透氣對身心都很好呢。')
+                _message3 = TextSendMessage(text='心情不好的時候就到外面走走吧(*･▽･*)')
+                line_bot_api.reply_message(event.reply_token, [message3,_message3])
+            elif 0.2 > s1 and s1 >= 0.15:
+                message4 = TextSendMessage(text='今天發生什麼不愉快的事了嗎？')
+                _message4 = TextSendMessage(text='這時候就好好放鬆一下自己吧(*ˊ∀ˋ*)')
+                line_bot_api.reply_message(event.reply_token, [message4,_message4])    
+            elif 0.25 > s1 and s1 >= 0.2:
+                message5 = TextSendMessage(text='怎麼了嗎？')
+                _message5 = TextSendMessage(text='不妨跟告解少女說說吧(´▽ˋ)')
+                line_bot_api.reply_message(event.reply_token, [message5,_message5])
+            elif 0.3 > s1 and s1 >= 0.25:
+                message6 = TextSendMessage(text='今天很累了吧？')
+                _message6 = TextSendMessage(text='但是別灰心，告解少女會陪您一起度過所有煩惱的！')
+                line_bot_api.reply_message(event.reply_token, [message6,_message6])
+            elif 0.35 > s1 and s1 >= 0.3:
+                message7 = TextSendMessage(text='今天看起來心情很糟呢0.0')
+                _message7 = TextSendMessage(text='想不想來點音樂呢？')
+                line_bot_api.reply_message(event.reply_token, [message7,_message7])
+            elif 0.4 > s1 and s1 >= 0.35:
+                message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
+                _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
+                line_bot_api.reply_message(event.reply_token, [message8,_message8])
+            elif 0.45 > s1 and s1 >= 0.4:
+                message9 = TextSendMessage(text='事情總會好起來的，所以請您也打起精神吧！')
+                line_bot_api.reply_message(event.reply_token, message9)
+            elif 0.5 > s1 and s1 >= 0.45:
+                message10 = TextSendMessage(text='今天也辛苦了呢！')
+                _message10 = TextSendMessage(text='讓告解少女為您分擔吧！')
+                line_bot_api.reply_message(event.reply_token, [message10,_message10])
+            elif 0.55 > s1 and s1 >= 0.5:
+                message10 = TextSendMessage(text='請問今天發生了什麼樣的事情呢？')
+                line_bot_api.reply_message(event.reply_token, message10)
+            elif 0.6 > s1 and s1 >= 0.55:
+                message11 = TextSendMessage(text='今天也辛苦了！')
+                _message11 = TextSendMessage(text='來和告解少女說說話吧～')
+                line_bot_api.reply_message(event.reply_token, [message11,_message11])
+            elif 0.65 > s1 and s1 >= 0.6:
+                message12 = TextSendMessage(text='您看起來心情不錯呢(*ˊ∀ˋ*)')
+                line_bot_api.reply_message(event.reply_token, message12)
+            elif 0.7 > s1 and s1 >= 0.65:
+                message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
+                _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
+                line_bot_api.reply_message(event.reply_token, [message13,_message13])
+            elif 0.7 > s1 and s1 >= 0.65:
+                message13 = TextSendMessage(text='看起來是遇見了什麼美好的事物呢。')
+                _message13 = TextSendMessage(text='希望能夠成為您生活的動力～')
+                line_bot_api.reply_message(event.reply_token, [message13,_message13])
+            elif 0.75 > s1 and s1 >= 0.7:
+                message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
+                _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
+                line_bot_api.reply_message(event.reply_token, [message13,_message13])          
           
 import os
 
