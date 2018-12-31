@@ -114,6 +114,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, message02)    
         # text = u +text
     else :
+            text = event.message.text    
             s = SnowNLP(text)
             s1 = SnowNLP(s.sentences[0])
             s1 = s1.sentiments
