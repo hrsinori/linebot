@@ -194,6 +194,8 @@ def handle_message(event):
                  continue
         outputvalue = 'number{}'.format(number)
         return outputvalue 
+        message20 = TextSendMessage(text=outputvalue)
+        line_bot_api.reply_message(event.reply_token, [message20])    
  
 
 import os
