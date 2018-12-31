@@ -73,9 +73,8 @@ def handle_message(event):
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
     ''' 
-    if text == '紀錄查詢' or text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
+    if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass   
-
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
@@ -186,18 +185,15 @@ def handle_message(event):
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt 
         #開關	
-            count=0
-            #以下3個變數作為加總的時候用的 	
-            number=0
-            for i in values:
-                if count==0:
-                    count+=1
-                    continue
-            outputvalue = 'number{}'.format(number)
-            return outputvalue
-       if text == '紀錄查詢' :
-        message20 = TextSendMessage(text='近期情緒平均指數：'+ outputvalue/count )
-        line_bot_api.reply_message(event.reply_token, [message20]) 
+        count=0
+        #以下3個變數作為加總的時候用的 	
+        number=0
+         for i in values:
+             if count==0:
+                 count+=1
+                 continue
+         outputvalue = 'number{}'.format(number)
+         return outputvalue 
  
 
 import os
