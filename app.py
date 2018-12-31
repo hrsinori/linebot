@@ -62,13 +62,12 @@ def handle_message(event):
 #     line_bot_api.reply_message(event.reply_token, _message)  
     # message = TextSendMessage(text=event)
 #     print(event)    
-    text= event.message.text
+    text = event.message.text
+    s = SnowNLP(text)
+    s1 = SnowNLP(s.sentences[0])
+    s1.sentiments
+    text = s1.sentiments
     if event.message.text != "":
-        s = SnowNLP(text)
-        s1 = SnowNLP(s.sentences[0])
-        s1.sentiments  
-        text = s1
-
         #GDriveJSON就輸入下載下來Json檔名稱
         #GSpreadSheet是google試算表名稱
         GDriveJSON = 'time.json'
@@ -85,7 +84,7 @@ def handle_message(event):
                     print('無法連線Google試算表', ex)
                     sys.exit(1)
                 textt=""
-                textt+=text
+                textt+= event.message.text
                 if textt!="":
                     worksheet.append_row((str(datetime.datetime.now()),textt))
                     print('新增一列資料到試算表' ,GSpreadSheet)
