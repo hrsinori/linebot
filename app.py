@@ -196,7 +196,7 @@ def handle_message(event):
             outputvalue = 'number{}'.format(number)
             return outputvalue
         if text == '紀錄查詢' :
-             n = number/count
+             n = outputvalue/count
              message20 = TextSendMessage(text='近期情緒平均指數：'+ n )
              line_bot_api.reply_message(event.reply_token, [message20]) 
 
