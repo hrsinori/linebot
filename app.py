@@ -63,42 +63,13 @@ def handle_message(event):
     # message = TextSendMessage(text=event)
 #     print(event)    
     text = event.message.text
-    s = SnowNLP(text)
-    s1 = SnowNLP(s.sentences[0])
-    s1.sentiments
-    c=s1.sentiments
-    d=str(c)
-    
-    if text != "":
-        #GDriveJSON就輸入下載下來Json檔名稱
-        #GSpreadSheet是google試算表名稱
-        GDriveJSON = 'time.json'
-        GSpreadSheet = 'time'
-        while True:
-                try:
-                    #scope = ['https://spreadsheets.google.com/feeds']
-                    scope = ['https://spreadsheets.google.com/feeds',
-                             'https://www.googleapis.com/auth/drive']
-                    key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-                    gc = gspread.authorize(key)
-                    worksheet = gc.open(GSpreadSheet).sheet1
-                except Exception as ex:
-                    print('無法連線Google試算表', ex)
-                    sys.exit(1)
-                textt=""
-                textt+= d
-                if textt!="":
-                    worksheet.append_row((str(datetime.datetime.now()),textt))
-                    print('新增一列資料到試算表' ,GSpreadSheet)
-                    return textt 
     '''            
     s = SnowNLP(text)
     s1 = SnowNLP(s.sentences[0])
     s1.sentiments 
     s1 = TextSendMessage(text = s1.sentiments)    
     line_bot_api.reply_message(event.reply_token, s1)
-    '''
-    text = event.message.text  
+    ''' 
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass
 
@@ -147,6 +118,31 @@ def handle_message(event):
                 _message7 = TextSendMessage(text='想不想來點音樂呢？')
                 line_bot_api.reply_message(event.reply_token, [message7,_message7])
             elif 0.4 > s1 and s1 >= 0.35:
+                    c=s1.sentiments
+                    d=str(c)
+
+                    if text != "":
+                        #GDriveJSON就輸入下載下來Json檔名稱
+                        #GSpreadSheet是google試算表名稱
+                        GDriveJSON = 'time.json'
+                        GSpreadSheet = 'time'
+                        while True:
+                                try:
+                                    #scope = ['https://spreadsheets.google.com/feeds']
+                                    scope = ['https://spreadsheets.google.com/feeds',
+                                             'https://www.googleapis.com/auth/drive']
+                                    key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+                                    gc = gspread.authorize(key)
+                                    worksheet = gc.open(GSpreadSheet).sheet1
+                                except Exception as ex:
+                                    print('無法連線Google試算表', ex)
+                                    sys.exit(1)
+                                textt=""
+                                textt+= d
+                                if textt!="":
+                                    worksheet.append_row((str(datetime.datetime.now()),textt))
+                                    print('新增一列資料到試算表' ,GSpreadSheet)
+                                    return textt 
                 message8 = TextSendMessage(text='笑一個吧(oﾟ▽ﾟ)o')
                 _message8 = TextSendMessage(text='笑容是可以化解任何不愉快的喔！')
                 line_bot_api.reply_message(event.reply_token, [message8,_message8])
