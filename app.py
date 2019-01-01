@@ -91,8 +91,8 @@ def handle_message(event):
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass  
     elif text == '健康資訊' :
-	    messaage = TextSendMessage(text='以下為您提供資訊')
-	    line_bot_api.reply_message(event.reply_token, message) 
+	    messagex = TextSendMessage(text='以下為您提供資訊')
+	    line_bot_api.reply_message(event.reply_token, messagex) 
 	    a=health()
 	    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))	 
     elif text == '好的' or text == '知道了' or text == '好喔' :
