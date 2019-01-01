@@ -45,7 +45,7 @@ def health():
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
     content = ""
-    for index, data in enumerate(soup.select('心理健康')):
+    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
         if index == 5:
             return content
         print("data：")
