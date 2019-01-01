@@ -201,9 +201,9 @@ def gettotal():
 		if count==0:
 			count+=1
 			continue
-	outputvalue = 'number:{}'.format(number)
-	return outputvalue
-a=outputvalue
+	outputtime = 'number:{}'.format(number)
+	return outputtime
+a=outputtime
 b=str(a)
 print(b)
    
