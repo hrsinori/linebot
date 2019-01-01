@@ -53,7 +53,27 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-  
+
+def gettotal():
+	
+	apikey={private_key}
+	getvalueurl=['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+	res = requests.get(getvalueurl)
+	data = res.content
+	
+	jsondata = json.loads(data)
+	time = jsondata['time']
+	#開關	
+	count=0
+	#以下3個變數作為加總的時候用的 	
+	number=0
+	for i in time:
+		if count==0:
+			count+=1
+			continue
+	outputtime = 'number:{}'.format(number)
+	return outputtime
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -185,25 +205,6 @@ def handle_message(event):
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
-def gettotal():
-	
-	apikey={private_key}
-	getvalueurl=['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-	res = requests.get(getvalueurl)
-	data = res.content
-	
-	jsondata = json.loads(data)
-	time = jsondata['time']
-	#開關	
-	count=0
-	#以下3個變數作為加總的時候用的 	
-	number=0
-	for i in time:
-		if count==0:
-			count+=1
-			continue
-	outputtime = 'number:{}'.format(number)
-	return outputtime
    
 import os
 
