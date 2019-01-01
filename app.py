@@ -23,6 +23,36 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 from selenium import webdriver
 
+GDriveJSON = 'time.json'
+GSpreadSheet = 'time'
+def getAverage():
+    
+    average = -1 
+    count = 0
+    total = 0
+    try:
+        scope = ['https://spreadsheets.google.com/feeds',
+                 'https://www.googleapis.com/auth/drive']
+        key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+        gc = gspread.authorize(key)
+        worksheet = gc.open(GSpreadSheet).sheet1
+        results = worksheet.col_values(2)
+        
+        for result in results:
+            try:
+                total += float(result)
+                count += 1
+            except Exception as ex:
+                average = -1
+    except Exception as ex:
+        print('無法連線Google試算表', ex)
+        sys.exit()
+    
+    if (count > 0):
+        average = total / count
+    
+    return average #average -1表示計算異常 
+
 app = Flask(__name__)
 
 ACCESS_TOKEN= os.environ['ACCESS_TOKEN']
@@ -188,35 +218,7 @@ def handle_message(event):
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
-GDriveJSON = 'time.json'
-GSpreadSheet = 'time'
-def getAverage():
-    
-    average = -1 
-    count = 0
-    total = 0
-    try:
-        scope = ['https://spreadsheets.google.com/feeds',
-                 'https://www.googleapis.com/auth/drive']
-        key = SAC.from_json_keyfile_name(GDriveJSON, scope)
-        gc = gspread.authorize(key)
-        worksheet = gc.open(GSpreadSheet).sheet1
-        results = worksheet.col_values(2)
-        
-        for result in results:
-            try:
-                total += int(result)
-                count += 1
-            except Exception as ex:
-                average = -1
-    except Exception as ex:
-        print('無法連線Google試算表', ex)
-        sys.exit()
-    
-    if (count > 0):
-        average = total / count
-    
-    return average #average -1表示計算異常   
+  
 import os
 
 if __name__ == "__main__":
