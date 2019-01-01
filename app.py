@@ -105,8 +105,8 @@ def handle_message(event):
            pass  
     if text == '紀錄查詢' :
             messages_ = TextSendMessage(text = '以下為您的近期平均情緒指數：')
-            messages = TextSendMessage(text = str(getAverage()))
-            line_bot_api.reply_message(event.reply_token, messages_,messages) 
+            messages = TextSendMessage(text = getAverage())
+            line_bot_api.reply_message(event.reply_token, [messages_,messages]) 
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您')
 	    line_bot_api.reply_message(event.reply_token, messagex) 	 
