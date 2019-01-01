@@ -92,7 +92,8 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, [message01,message01_])    
     elif text == '跟你說喔' or text == '我跟你說' :
             message02 = TextSendMessage(text='請問怎麼了嗎？')
-            line_bot_api.reply_message(event.reply_token, message02)    
+            message02_ = TextSendMessage(text=outputtime)
+            line_bot_api.reply_message(event.reply_token, message02,message02_)    
         # text = u +text
     else :  
             s = SnowNLP(text)
@@ -203,9 +204,7 @@ def gettotal():
 			continue
 	outputtime = 'number:{}'.format(number)
 	return outputtime
-a=outputtime
-b=str(a)
-print(b)
+        outputtime.sentiments 
    
 import os
 
