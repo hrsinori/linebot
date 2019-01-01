@@ -184,21 +184,21 @@ def handle_message(event):
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
-	if (userCommandString.Contains("紀錄查詢"))
-                {
-                    var result = _service.Getnumber(ReceivedMessage.events[0].source.number);
+	    if (event.message.text == "紀錄查詢")
+			{
+			    var result = _service.Getnumber(ReceivedMessage.events[0].source.number);
 
-                    //取得更新後的錢
-                    string.Format("用戶當前金額: {0}", result);
+			    //取得更新後的錢
+			    string.Format("用戶當前金額: {0}", result);
 
-                    //回覆API
-                    var call = Task.Run(() =>
-                    {
-                        bot.ReplyMessage(
-                          ReceivedMessage.events[0].replyToken,
-                          message);
-                    });
-                }
+			    //回覆API
+			    var call = Task.Run(() =>
+			    {
+				bot.ReplyMessage(
+				  ReceivedMessage.events[0].replyToken,
+				  message);
+			    });
+			}
    
 import os
 
