@@ -185,16 +185,16 @@ def handle_message(event):
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt 
 	    #開關	
-	    count=0
+	  count=0
 	    #以下3個變數作為加總的時候用的 	
-	    number=0
-	    for i in values:
-		 if count==0:
-		    count+=1
-		    continue
-	    outputvalue = 'number{}'.format(number)
-	    return outputvalue 
-	    print(outputvalue)
+	  number=0
+	  for i in values:
+	          if count==0:
+		  count+=1
+		  continue
+	  outputvalue = 'number{}'.format(number)
+	  return outputvalue 
+	  print(outputvalue)
    
 import os
 
