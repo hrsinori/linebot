@@ -106,10 +106,12 @@ def handle_message(event):
     if text == '紀錄查詢' :
             messages_ = TextSendMessage(text = '以下為您的近期平均情緒指數：')
             messages = TextSendMessage(text = getAverage())
-            line_bot_api.reply_message(event.reply_token, [messages_,messages]) 
+            line_bot_api.reply_message(event.reply_token, [messages_,messages])
+	    break
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您～')
 	    line_bot_api.reply_message(event.reply_token, messagex)
+	    break
     elif text == '早安' or text == '午安' or text == '晚安' :
             messageG = ImageSendMessage(
             original_content_url='https://i.imgur.com/HzL5GO9.jpg',
@@ -201,6 +203,7 @@ def handle_message(event):
                 message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
                 _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
                 line_bot_api.reply_message(event.reply_token, [message13,_message13])          
+		
     if text != "":
         c=s1
         d=str(c)
@@ -221,9 +224,7 @@ def handle_message(event):
                 sys.exit(1)
             textt=""
             textt+= d
-            if event.message.text == '紀錄查詢' or '健康資訊':
-                pass
-            elif textt!="":
+            if textt!="":
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
