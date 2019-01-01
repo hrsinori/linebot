@@ -109,7 +109,13 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, [messages_,messages]) 
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您')
-	    line_bot_api.reply_message(event.reply_token, messagex) 	 
+	    line_bot_api.reply_message(event.reply_token, messagex)
+    elif text == '早安' or text == '午安' or text == '晚安' :
+            messageG_ = ImageSendMessage(
+            original_content_url='https://i.imgur.com/xfPwnn8.jpg',
+            preview_image_url='https://i.imgur.com/xfPwnn8.jpg'
+            )
+            line_bot_api.reply_message(event.reply_token, messageG) 
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
@@ -195,7 +201,7 @@ def handle_message(event):
                 message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
                 _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
                 line_bot_api.reply_message(event.reply_token, [message13,_message13])          
-    if text != "" or '紀錄查詢' or '健康資訊':
+    if text != "":
         c=s1
         d=str(c)
         #GDriveJSON就輸入下載下來Json檔名稱
@@ -215,7 +221,7 @@ def handle_message(event):
                 sys.exit(1)
             textt=""
             textt+= d
-            if textt!="":
+            if textt!="" or '紀錄查詢' or '健康資訊':
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
