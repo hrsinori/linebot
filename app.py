@@ -93,8 +93,8 @@ def handle_message(event):
     elif text == '健康資訊' :
 	    a=health()
 	    messaage = TextSendMessage(text='以下為您提供資訊')
-	    line_bot_api.reply_message(event.reply_token,message)
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+            _messaage = TextSendMessage(text=a)
+	    line_bot_api.reply_message(event.reply_token, [message,_message]) 
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
