@@ -221,7 +221,9 @@ def handle_message(event):
                 sys.exit(1)
             textt=""
             textt+= d
-            if textt!="" or '紀錄查詢' or '健康資訊':
+            if event.message.text == '紀錄查詢' or '健康資訊':
+                pass
+	    elif textt!="" or '紀錄查詢' or '健康資訊':
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
