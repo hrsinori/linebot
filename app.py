@@ -107,11 +107,11 @@ def handle_message(event):
             messages_ = TextSendMessage(text = '以下為您的近期平均情緒指數：')
             messages = TextSendMessage(text = getAverage())
             line_bot_api.reply_message(event.reply_token, [messages_,messages])
-            end
+           end
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您～')
 	    line_bot_api.reply_message(event.reply_token, messagex)
-            end
+           end
     elif text == '早安' or text == '午安' or text == '晚安' :
             messageG = ImageSendMessage(
             original_content_url='https://i.imgur.com/HzL5GO9.jpg',
