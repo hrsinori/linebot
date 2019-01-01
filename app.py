@@ -61,12 +61,12 @@ def gettotal():
 	data = res.content
 	
 	jsondata = json.loads(data)
-	time = jsondata['time']
+	value = jsondata['time']
 	#開關	
 	count=0
 	#以下3個變數作為加總的時候用的 	
 	number=0
-	for i in time:
+	for i in value:
 		if count==0:
 			count+=1
 			continue
