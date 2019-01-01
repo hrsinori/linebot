@@ -22,6 +22,35 @@ import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 from selenium import webdriver
+GDriveJSON = 'time.json'
+GSpreadSheet = 'time'
+def getAverage():
+    
+    average = -1 
+    count = 0
+    total = 0
+    try:
+        scope = ['https://spreadsheets.google.com/feeds',
+                 'https://www.googleapis.com/auth/drive']
+        key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+        gc = gspread.authorize(key)
+        worksheet = gc.open(GSpreadSheet).sheet1
+        results = worksheet.col_values(2)
+        
+        for result in results:
+            try:
+                total += int(result)
+                count += 1
+            except Exception as ex:
+                average = -1
+    except Exception as ex:
+        print('無法連線Google試算表', ex)
+        sys.exit()
+    
+    if (count > 0):
+        average = total / count
+    
+    return average #average -1表示計算異常
 
 app = Flask(__name__)
 
@@ -73,6 +102,9 @@ def handle_message(event):
     ''' 
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass  
+    elif text == '紀錄查詢' :
+	    messages = TextSendMessage(text=getAverage())
+	    line_bot_api.reply_message(event.reply_token, messages) 
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您')
 	    line_bot_api.reply_message(event.reply_token, messagex) 	 
