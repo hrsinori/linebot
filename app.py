@@ -21,6 +21,7 @@ import sys
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials as SAC
+from selenium import webdriver
 
 app = Flask(__name__)
 
@@ -37,24 +38,6 @@ pm_site = {}
 @app.route("/")
 def hello_world():
     return "hello world!"
-
-def health():
-    target_url = 'https://www.google.com.tw/webhp'
-    rs = requests.session()
-    res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
-    soup = BeautifulSoup(res.text, 'html.parser')   
-    content = ""
-    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-        if index == 5:
-            return content
-        print("data：")
-        print(index)
-        print(data)        
-        title = data.text
-        link =  data['href']
-        content += '{}\n{}\n'.format(title, link)
-    return content
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -93,8 +76,8 @@ def handle_message(event):
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='以下為您提供資訊')
 	    line_bot_api.reply_message(event.reply_token, messagex) 
-	    a=health()
-	    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))	 
+	    messagex_ = TextSendMessage(text='https://www.mohw.gov.tw/mp-1.html')
+	    line_bot_api.reply_message(event.reply_token,messagex_)	 
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
