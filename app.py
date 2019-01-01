@@ -193,10 +193,10 @@ def gettotal():
 	
 	jsondata = json.loads(data)
 	time = jsondata['time']
-    #開關	
-    count=0
-    #以下3個變數作為加總的時候用的 	
-    number=0
+	#開關	
+	count=0
+	#以下3個變數作為加總的時候用的 	
+	number=0
 	for i in time:
 		if count==0:
 			count+=1
