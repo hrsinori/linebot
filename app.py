@@ -203,7 +203,9 @@ def gettotal():
 			continue
 	outputvalue = 'number:{}'.format(number)
 	return outputvalue
-print(outputvalue)
+a=outputvalue
+b=str(a)
+print(b)
    
 import os
 
