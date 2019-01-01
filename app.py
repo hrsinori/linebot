@@ -204,7 +204,6 @@ def gettotal():
 			continue
 	outputtime = 'number:{}'.format(number)
 	return outputtime
-                outputtime.sentiments 
    
 import os
 
