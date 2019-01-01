@@ -103,11 +103,10 @@ def handle_message(event):
     ''' 
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
            pass  
-    elif text == '紀錄查詢' :
-            a = getAverage()
-	    b = str(a)	
-	    messages = TextSendMessage(text='近期情緒指數：'+ b)
-	    line_bot_api.reply_message(event.reply_token, messages) 
+    elif text == '紀錄查詢' :	
+	    messages = TextSendMessage(text='近期情緒指數如下')
+            messages_ = TextSendMessage(text=getAverage())
+	    line_bot_api.reply_message(event.reply_token, messages,messages_) 
     elif text == '健康資訊' :
 	    messagex = TextSendMessage(text='希望能幫助到您')
 	    line_bot_api.reply_message(event.reply_token, messagex) 	 
