@@ -195,7 +195,7 @@ def handle_message(event):
                 message13 = TextSendMessage(text='今天的您看起來心情很好呢！')
                 _message13 = TextSendMessage(text='是不是發生什麼好事嘞呢？')
                 line_bot_api.reply_message(event.reply_token, [message13,_message13])          
-    if text != "":
+    if text != "" or '紀錄查詢' or '健康資訊':
         c=s1
         d=str(c)
         #GDriveJSON就輸入下載下來Json檔名稱
