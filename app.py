@@ -108,7 +108,7 @@ def handle_message(event):
             messages = TextSendMessage(text = getAverage())
             line_bot_api.reply_message(event.reply_token, [messages_,messages]) 
     elif text == '健康資訊' :
-	    messagex = TextSendMessage(text='希望能幫助到您')
+	    messagex = TextSendMessage(text='希望能幫助到您～')
 	    line_bot_api.reply_message(event.reply_token, messagex)
     elif text == '早安' or text == '午安' or text == '晚安' :
             messageG = ImageSendMessage(
