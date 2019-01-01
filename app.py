@@ -38,7 +38,23 @@ pm_site = {}
 def hello_world():
     return "hello world!"
 
-
+def health():
+    target_url = 'https://www.google.com.tw/webhp'
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')   
+    content = ""
+    for index, data in enumerate(soup.select('心理健康')):
+        if index == 5:
+            return content
+        print("data：")
+        print(index)
+        print(data)        
+        title = data.text
+        link =  data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -53,25 +69,6 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-def gettotal():
-	
-	apikey={'46de43cb84d0d953d5fa06b63a662c2285f54968'}
-	getvalueurl='https://sheets.googleapis.com/v4/spreadsheets/107741738287226473711/value/sheet1!A:C?key=%s' % (apikey)
-	res = requests.get(getvalueurl)
-	data = res.content
-	
-	jsondata = json.loads(data)
-	value = jsondata['time']
-	#開關	
-	count=0
-	#以下3個變數作為加總的時候用的 	
-	number=0
-	for i in value:
-		if count==0:
-			count+=1
-			continue
-	outputtime = 'number:{}'.format(number)
-	return outputtime
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -92,7 +89,11 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, s1)
     ''' 
     if text == '謝謝' or text == '謝謝你' or text == '幹' or text == '去你的' or text == '開心' or text == '悲傷' or text == '對阿' or text == '對啊' :
-           pass   
+           pass  
+    elif text == '健康資訊' :
+	a=health()
+	messaage = TextSendMessage(text='以下為您提供資訊')
+        line_bot_api.reply_message(event.reply_token,[message,TextSendMessage(text=a)])
     elif text == '好的' or text == '知道了' or text == '好喔' :
             message00 = TextSendMessage(text='看來您能理解呢，真是太好了！')
             _message00 = TextSendMessage(text='請繼續加油吧！')
