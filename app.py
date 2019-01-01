@@ -112,8 +112,8 @@ def handle_message(event):
 	    line_bot_api.reply_message(event.reply_token, messagex)
     elif text == '早安' or text == '午安' or text == '晚安' :
             messageG = ImageSendMessage(
-            original_content_url='https://i.imgur.com/xfPwnn8.jpg',
-            preview_image_url='https://i.imgur.com/xfPwnn8.jpg'
+            original_content_url='https://i.imgur.com/HzL5GO9.jpg',
+            preview_image_url='https://i.imgur.com/HzL5GO9.jpg'
             )
             line_bot_api.reply_message(event.reply_token, messageG) 
     elif text == '好的' or text == '知道了' or text == '好喔' :
