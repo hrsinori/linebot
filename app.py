@@ -184,8 +184,26 @@ def handle_message(event):
                 worksheet.append_row((str(datetime.datetime.now()),textt))
                 print('新增一列資料到試算表' ,GSpreadSheet)
                 return textt
-	    print(format(number))
-
+def gettotal():
+	
+	apikey={private_key}
+	getvalueurl=['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+	res = requests.get(getvalueurl)
+	data = res.content
+	
+	jsondata = json.loads(data)
+	time = jsondata['time']
+    #開關	
+    count=0
+    #以下3個變數作為加總的時候用的 	
+    number=0
+	for i in time:
+		if count==0:
+			count+=1
+			continue
+	outputvalue = 'number:{}'.format(number)
+	return outputvalue
+        print(outputvalue)
    
 import os
 
