@@ -122,7 +122,7 @@ def handle_message(event):
 	    line_bot_api.reply_message(event.reply_token, [message3,message6])
     elif text == '我也要謝謝你' :
 	    message4 = TextSendMessage(text='您過獎啦～')
-            message5 = ImageSendMessage(
+	    message5 = ImageSendMessage(
             original_content_url='https://i.imgur.com/xfPwnn8.jpg',
             preview_image_url='https://i.imgur.com/xfPwnn8.jpg'
             )
