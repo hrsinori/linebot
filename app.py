@@ -119,7 +119,7 @@ def handle_message(event):
             original_content_url='https://i.imgur.com/TIB3QUp.jpg',
             preview_image_url='https://i.imgur.com/TIB3QUp.jpg'
             )
-	    line_bot_api.reply_message(event.reply_token, [message3,message7])
+            line_bot_api.reply_message(event.reply_token, [message3,message7])
     elif text == '我也要謝謝你' :
 	    message4 = TextSendMessage(text='您過講啦～')
             message5 = ImageSendMessage(
