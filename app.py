@@ -108,8 +108,25 @@ def handle_message(event):
             messages = TextSendMessage(text = getAverage())
             line_bot_api.reply_message(event.reply_token, [messages_,messages])
     elif text == '健康資訊' :
-	    messagex = TextSendMessage(text='希望能幫助到您～')
-	    line_bot_api.reply_message(event.reply_token, messagex)
+	    message1 = TextSendMessage(text='希望能幫助到您～')
+	    line_bot_api.reply_message(event.reply_token, message1)
+    elif text == '好哇' :
+	    message2 = TextSendMessage(text='您請說吧～')
+	    line_bot_api.reply_message(event.reply_token, message2)
+    elif text == '因為終於把你搞定了' :
+	    message3 = TextSendMessage(text='也是呢,真是太感謝您了!')
+            message6 = ImageSendMessage(
+            original_content_url='https://i.imgur.com/TIB3QUp.jpg',
+            preview_image_url='https://i.imgur.com/TIB3QUp.jpg'
+            )
+	    line_bot_api.reply_message(event.reply_token, [message3,message6])
+    elif text == '我也要謝謝你' :
+	    message4 = TextSendMessage(text='您過講啦～')
+            message5 = ImageSendMessage(
+            original_content_url='https://i.imgur.com/xfPwnn8.jpg',
+            preview_image_url='https://i.imgur.com/xfPwnn8.jpg'
+            )
+	    line_bot_api.reply_message(event.reply_token, [message4,message5])
     elif text == '早安' or text == '午安' or text == '晚安' :
             messageG = ImageSendMessage(
             original_content_url='https://i.imgur.com/HzL5GO9.jpg',
