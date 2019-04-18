@@ -24,7 +24,7 @@ from oauth2client.service_account import ServiceAccountCredentials as SAC
 from selenium import webdriver
 
 GDriveJSON = 'time.json'
-GSpreadSheet = 'time'
+GSpreadSheet = 'time' 
 def getAverage():
     
     average = -1 
